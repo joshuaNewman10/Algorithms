@@ -1,0 +1,53 @@
+/*
+* Write a function that generates every sequence of throws a single
+* player could throw over a three-round game of rock-paper-scissors.
+*
+* Your output should look something like:
+*   [["rock", "rock", "rock"],
+*    ["rock", "rock", "paper"],
+*    ["rock", "rock", "scissors"],
+*    ["rock", "paper", "rock"],
+             ...etc...
+     ]
+*
+* Extra credit:
+*   - Make your function return answers for any number of rounds.
+* Example:
+* rockPaperScissors(5); // => [['rock', 'rock', 'rock', 'rock', 'rock'], etc...]
+*
+*/
+var options = ['rock', 'paper', 'scissors'];
+var combinations = [];
+
+var rps = function (param) {
+  var combo = [];
+  var play;
+  var res = false;
+  for(var i=0; i<param; i++) {
+    combo.push(options[Math.floor(Math.random() * options.length)]);
+  } 
+  for(var j=0; j<combinations.length; j++) {
+    res = equalTo(combo, combinations[j]);
+    if(res) return;
+  }
+  combinations.push(combo);
+};
+
+function equalTo(arr1,arr2) {
+  var res = true;
+  for(var i=0; i<arr1.length; i++) {
+    if(arr1[i] !== arr2[i]) {
+      res = false;
+    }
+  }
+  return res;
+}
+
+
+var rockPaperScissors = function(param) {
+  for(var k=0; k<2000; k++) {
+    rps(param);
+  }
+  return combinations;
+};
+
