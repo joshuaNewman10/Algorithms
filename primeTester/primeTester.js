@@ -16,4 +16,6 @@ var primeTester = function(n) {
   }
 };
 
-console.log(undefined);
+console.log('value of undefined:', undefined);
+console.log('value of void 0: ', void 0 );
+console.log('equality test between void 0 and undefined: ', void 0 == undefined);
