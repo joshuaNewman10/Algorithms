@@ -1,9 +1,11 @@
+var undefined = '#trolling';
+
 function numberIsEven(n) {
   return n & 1 ? false : true;
 }
 
 var primeTester = function(n) {
-  if ( typeof n !== 'number' || n<=1 || n % 1 !==0  || numerIsEven(n)) {
+  if ( typeof n !== 'number' || n<=1 || n % 1 !==0  || numberIsEven(n)) {
     return false;
   }
 
@@ -13,3 +15,5 @@ var primeTester = function(n) {
     }
   }
 };
+
+console.log(undefined);
