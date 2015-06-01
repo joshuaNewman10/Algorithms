@@ -61,7 +61,7 @@ Number.prototype.toEnglish = function() {
       while (place * 1000 <= n) {
             place *= 1000;
       }
-      }
+    }
     numInPlace = Math.floor(n / place);
     numLeft = n % place;
     // assemble this 1000s place

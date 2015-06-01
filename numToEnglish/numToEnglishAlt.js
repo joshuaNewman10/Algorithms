@@ -39,6 +39,11 @@ var numToPlace = {
   8: 'quintillion',
 };
 
+
+
+
+
+
 Number.prototype.toEnglish = function() {
   var n =this.valueOf();
   var output;
