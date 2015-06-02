@@ -107,7 +107,10 @@ Function.prototype.bind = function(cx) {
  // console.log( result === 'foobar'); // true
 
 
- var partialAny = (function() {
+/****************************
+PartialAny
+****************************/
+var partialAny = (function() {
 
   function partialAny(fn) {
     var orig = Array.prototype.slice.call(arguments,0);
@@ -128,3 +131,46 @@ Function.prototype.bind = function(cx) {
   partialAny._ = {}; //placeholder arg
   return partialAny;
 }());
+
+function hex(r, g, b) {
+  return '#' + r + g + b;
+}
+
+hex('11', '22', '33'); // "#112233"
+
+// A more visually-appealing placeholder.
+var __ = partialAny._;
+
+var redMax = partialAny(hex, 'ff', __, __);
+redMax('11', '22');    // "#ff1122"
+
+var greenMax = partialAny(hex, __, 'ff');
+greenMax('33', '44');  // "#33ff44"
+
+var blueMax = partialAny(hex, __, __, 'ff');
+blueMax('55', '66');   // "#5566ff"
+
+var magentaMax = partialAny(hex, 'ff', __, 'ff');
+magentaMax('77');      // "#ff77ff"
+
+
+function partialAny(func) {
+  var fixedArgs = Array.prototype.slice.call(arguments,1);
+
+  return function() {
+    var newArgs = Array.prototype.slice.call(arguments);
+
+    var orderedArgs = newArgs.map(function(arg){
+
+      if(arg==='_') {
+        var a = fixedArgs[0];
+        fixedArgs = fixedArgs.slice(1);
+        return a;
+      }
+      return arg;
+    });
+
+    return func.apply(null,orderedArgs);
+
+  };
+}
