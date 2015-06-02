@@ -20,7 +20,7 @@ var numToWords = {
   18: 'eighteen',
   19: 'nineteen',
   20: 'twenty',
-  30: 'thirty',
+  30: 'thirty',   
   40: 'forty',
   50: 'fifty',
   60: 'sixty',
