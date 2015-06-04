@@ -1,0 +1,47 @@
+var jsonpDispatcher = {};
+
+
+var jsonpRequest = (function() {
+  var key = 0;
+
+  return function(url, callback) {
+    var i = ++key;
+
+    jsonpDispatcher[i] = function() {
+      callback.apply(this, arguments);
+      delete jsonpDispatcher[i];
+
+    var callbackScripts = document.body.getElementsByClassName('script');
+    callbackScripts[0].parentNode.removeChild(callbackScripts[0]);
+    };
+
+    var script = document.createElement('script');
+    script.src = url + '?callback=jsonpDispatcher[' + key + ']';
+    script.className = 'script';
+    document.body.appendChild(script);
+
+  };
+})();
+
+
+
+
+
+
+
+
+
+
+jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+      console.log(data.response); // "Aw yeah, now we're JSONPartying"
+      console.log(data.random); // 3558
+    });
+
+jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+      console.log(data.response); // "Aw yeah, now we're JSONPartying"
+      console.log(data.random); // 3558
+    });
+jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+      console.log(data.response); // "Aw yeah, now we're JSONPartying"
+      console.log(data.random); // 3558
+    });

@@ -26,22 +26,52 @@
  */
 
 
-
-var jsonpRequest = function(url, cb) {
+var jsonpRequest = function(url, callback) {
+  
   var script = document.createElement('script');
-  script.src = url + '/jsonp?callback=cb';
+  script.src = url + '?callback=onResponse';
+  window.onResponse = callback;
+
   document.body.appendChild(script);
+
+
 };
 
+var dispatcher = {};
 
-var jsonpRequest = function(url, cb) {
-  var script = document.createElement('script');
-  script.src = url + '/jsonp?callback=onResponse';
-  window.onResponse = 'callback';
-  document.body.appendChild(script);
+var i = 0;
+var testRequest = function(url, callback) {
+  dispatcher[i++]  = function() {
+    callack.apply(this, arguments);
+    delete dispatcher[i];
+  };
 };
 
-jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
-      console.log(data.response); // "Aw yeah, now we're JSONPartying"
-      console.log(data.random); // 3558
-    });
+testRequest('hello', function(){
+  console.log('func1!');
+});
+
+testRequest('hello', function(){
+  console.log('func2!');
+});
+testRequest('hello', function(){
+  console.log('func3!');
+});
+
+console.log(dispatcher);
+
+
+
+// jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+//       console.log(data.response); // "Aw yeah, now we're JSONPartying"
+//       console.log(data.random); // 3558
+//     });
+
+// jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+//       console.log(data.response); // "Aw yeah, now we're JSONPartying"
+//       console.log(data.random); // 3558
+//     });
+// jsonpRequest('http://toy-problems.hackreactor.com/jsonparty', function (data) {
+//       console.log(data.response); // "Aw yeah, now we're JSONPartying"
+//       console.log(data.random); // 3558
+//     });
