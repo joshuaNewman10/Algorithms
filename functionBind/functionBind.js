@@ -163,14 +163,14 @@ function partialAny(func) {
     var orderedArgs = newArgs.map(function(arg){
 
       if(arg==='_') {
-        var a = fixedArgs[0];
+        var nextArg = fixedArgs[0];
         fixedArgs = fixedArgs.slice(1);
-        return a;
+        return nextArg;
       }
       return arg;
     });
 
-    return func.apply(null,orderedArgs);
+    return func.apply(null, orderedArgs);
 
   };
 }
