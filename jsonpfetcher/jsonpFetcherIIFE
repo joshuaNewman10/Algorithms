@@ -7,7 +7,6 @@ var jsonpRequest = (function() {
   return function(url, callback) {
     var i = ++key;
 
-    jsonpDispatcher[i] = function() {
       callback.apply(this, arguments);
       delete jsonpDispatcher[i];
 

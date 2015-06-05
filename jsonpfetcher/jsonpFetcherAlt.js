@@ -15,27 +15,11 @@ var testRequest = (function() {
 })();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-testRequest('a', function() {
-  console.log('wahoooo!');
-});
-
 testRequest('aaa', function() {
   console.log('wahoooo!');
 });
 
+console.log('dispatcher', dispatcher);
+
 dispatcher[1]();
+console.log(dispatcher)
