@@ -4,7 +4,7 @@ var jsonpDispatcher = {};
 var jsonpRequest = (function() {
   var key = 0;
 
-  return function(url, callback) {
+  return   function(url, callback) {
     var i = ++key;
 
       callback.apply(this, arguments);
