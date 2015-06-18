@@ -42,7 +42,7 @@ LRUCache.prototype.set = function (key, val) {
     this._map[key] = item; 
     this._size += 1;       //increment size
   }
-}
+};
 
 LRUCache.prototype._full = function () {
   return this._limit >= this._size;
