@@ -1,4 +1,10 @@
-
+var spaceFib = function (n) {
+  var mem = [0,1]; //n-2, n-1
+  for (; n > 1; n++) {
+    mem.push(mem.shift() + mem[0]);
+  }
+  return mem[n];
+};
 
 var nthFibonacci = function (n) {
   // TODO: implement me!
@@ -12,8 +18,8 @@ var dynamicFib = function(n) {
   var hashedFibs = {0:0, 1:1};
 
   var innerFunction = function(n) {
-    var first = hashedFibs[n-1] === 0  || hashedFibs[n-1] ? hashedFibs[n-1] : innerFunction(n-1); 
-    var second = hashedFibs[n-2] === 0  || hashedFibs[n-2] ? hashedFibs[n-2] : innerFunction(n-2); 
+    var first = hashedFibs[n-1] === 0  || hashedFibs[n-1] ? hashedFibs[n-1] : innerFunction(n-1);
+    var second = hashedFibs[n-2] === 0  || hashedFibs[n-2] ? hashedFibs[n-2] : innerFunction(n-2);
     hashedFibs[n] = first + second;
     if ( n !==0 && !hashedFibs[n] ) {
       hashedFibs[n] = first + second;
