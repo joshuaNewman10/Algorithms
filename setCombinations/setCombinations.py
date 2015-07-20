@@ -16,10 +16,6 @@ def findSubsets(str):
   recurse(str)
   return solutions
 
-
-
-
-
 # print findSubsets('123')
 
 
