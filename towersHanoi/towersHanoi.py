@@ -1,7 +1,7 @@
 def towers_hanoi(n):
-    a = []
-    b = []
-    c = []
+    a = []  #source
+    b = []  #spare
+    c = []  #dest
     for index in range(n):
         a.append(index+1)
 
