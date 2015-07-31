@@ -46,6 +46,7 @@ def dfs(undirected_graph, vertex, visited={}):
         if (vertex not in visited):
             dfs(undirected_graph, vertex, visited)
 
+
 def bfs(undirected_graph, vertex, visited={}):
     bfs_queue = Queue()
     bfs_queue.enqueue(vertex)
@@ -59,18 +60,3 @@ def bfs(undirected_graph, vertex, visited={}):
                 visited[v] = True
                 bfs_queue.enqueue(v)
 
-my_graph = UndirectedGraph()
-my_graph.add_vertex(10)
-my_graph.add_vertex(20)
-my_graph.add_vertex(30)
-my_graph.add_vertex(40)
-my_graph.add_vertex(50)
-
-my_graph.add_edge(0, 1)
-my_graph.add_edge(0, 2)
-my_graph.add_edge(1, 3)
-my_graph.add_edge(4, 3)
-my_graph.add_edge(4, 1)
-
-# dfs(my_graph, 0)
-bfs(my_graph, 0)

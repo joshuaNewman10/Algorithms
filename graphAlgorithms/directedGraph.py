@@ -17,7 +17,7 @@ class GraphNode:
         self.value = value
 
 
-class UndirectedGraph:
+class DirectedGraph:
     def __init__(self):
         self.edge_list = []
         self.vertices = {}
@@ -36,40 +36,25 @@ class UndirectedGraph:
         self.edge_list[source].append(target)
 
 
-def dfs(undirected_graph, vertex, visited={}):
+def dfs(directed_graph, vertex, visited={}):
     print(vertex)
-    edge_list = undirected_graph.edge_list
+    edge_list = directed_graph.edge_list
     visited[vertex] = True
     edges = edge_list[vertex]
     for vertex in edges:
         if (vertex not in visited):
-            dfs(undirected_graph, vertex, visited)
+            dfs(directed_graph, vertex, visited)
 
-def bfs(undirected_graph, vertex, visited={}):
+def bfs(directed_graph, vertex, visited={}):
     bfs_queue = Queue()
     bfs_queue.enqueue(vertex)
     visited[vertex] = True
     while(bfs_queue.num_items > 0):
         curr_vertex = bfs_queue.dequeue()
         print(curr_vertex)
-        edge_list = undirected_graph.edge_list[curr_vertex]
+        edge_list = directed_graph.edge_list[curr_vertex]
         for v in edge_list:
             if (v not in visited):
                 visited[v] = True
                 bfs_queue.enqueue(v)
 
-my_graph = UndirectedGraph()
-my_graph.add_vertex(10)
-my_graph.add_vertex(20)
-my_graph.add_vertex(30)
-my_graph.add_vertex(40)
-my_graph.add_vertex(50)
-
-my_graph.add_edge(0, 1)
-my_graph.add_edge(0, 2)
-my_graph.add_edge(1, 3)
-my_graph.add_edge(4, 3)
-my_graph.add_edge(1, 4)
-
-dfs(my_graph, 0)
-bfs(my_graph, 0)
