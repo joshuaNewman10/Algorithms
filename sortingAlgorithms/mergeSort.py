@@ -28,5 +28,5 @@ def merge_sort(arr, start=0, end=None):
     return temp_arr
 
 
-# print(merge_sort([1,3,-1, 10, 10, 10, 10, 8, 7, 6, 5, 4, 3, 20]))
+print(merge_sort([1,3,-1, 10, 10, 10, 10, 8, 7, 6, 5, 4, 3, 20]))
 print(merge_sort([1,3,2, 7, -1, 100, 2, 5, 13, 99, -100]))
