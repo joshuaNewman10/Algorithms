@@ -92,7 +92,7 @@ def tree_to_array(tree):
         tree = current_tree[0]
         tree_depth = current_tree[1]
         if (len(output) <= tree_depth):
-           output.append([])
+            output.append([])
         output[tree_depth].append(tree.node.value)
         for child_tree in tree.children:
             tree_queue.enqueue((child_tree, tree_depth+1))
@@ -111,13 +111,24 @@ def tree_to_linked_list(tree):
         tree = current_tree[0]
         tree_depth = current_tree[1]
         if (len(output) <= tree_depth):
-           output.append(LinkedList())
+            output.append(LinkedList())
         output[tree_depth].add_to_tail(tree.node.value)
         for child_tree in tree.children:
             tree_queue.enqueue((child_tree, tree_depth+1))
 
     return output
 
+
+def dfs_tree_to_linked_list(tree, output=[], depth=0):
+
+    if (len(output) <= depth):
+        output.append(LinkedList())
+    output[depth].add_to_tail(tree.node.value)
+
+    for child in tree.children:
+        dfs_tree_to_linked_list(child, output, depth+1)
+
+    return output
 
 
 myTree = Tree(4)
@@ -128,10 +139,10 @@ myTree.children[0].add_child(100)
 
 # myTree.print_in_bfs_order()
 
-lists = tree_to_linked_list(myTree)
-for list in lists:
-    print('list')
-    list.print_list()
+# lists = tree_to_linked_list(myTree)
+# for list in lists:
+#     print('list')
+#     list.print_list()
 
 
 # testList = LinkedList()
@@ -139,3 +150,6 @@ for list in lists:
 # testList.add_to_tail(4)
 # testList.add_to_tail(10)
 # testList.print_list()
+
+
+print(dfs_tree_to_linked_list(myTree))
