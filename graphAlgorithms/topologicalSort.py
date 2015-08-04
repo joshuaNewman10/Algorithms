@@ -27,7 +27,7 @@ def dfs(directed_graph, orig_vertex, visited, ordering, current_label):
     current_label -= 1
     return current_label
 
-
+# Useful for implementing source control/scheduling tasks with dependencies
 def topological_ordering(directed_graph):
     def dfs_loop():
         visited = {}
