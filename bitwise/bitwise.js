@@ -46,10 +46,21 @@ function updateBits(m, n, i, j) {
   /*Create mask to clear bits from j  through i */
   var allOnes = ~0;
 
-  var left = allOnes << j;
+  var left = allOnes << (j + 1); //something like 1100000000
 
-  var right = ((1 << i) - 1);
+  var right = ((1 << i) - 1); //something like 00000011
+
+  var mask = left | right;
+
+  var n_cleared = n & mask;
+
+  var m_shifted = m << i;
+
+  var answer = n_cleared | m_shifted;
 }
 
 updateBits(10, 10, 10, 10);
 
+function binaryToString() {
+
+}
