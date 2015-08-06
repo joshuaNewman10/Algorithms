@@ -1,0 +1,58 @@
+//Binary Stuff
+
+Addition
+
+Subtraction
+
+Negation
+
+Left Shift
+
+Right Shift
+
+Two's Complement (invert digits and add 1)
+
+Multiplication
+
+Division (Right Shift)
+
+XOR
+
+Tricks
+------
+
+0110 + 0110 is equiv to 0110 * 2 is equiv to 0110 << 1 which is 1100
+
+0100 * 0011 is equiv to 0011 << 2 which is 1100
+
+1101 ^ (~1101) is equiv to 1111 since xoring a bit with its negated value!
+
+1011 & (~0 << 2) --> (~0) is seq or 1s, << 2 will be seq or 1s and then 0s
+            so then have 1011 & 1100 which will clear last two values with the & operator
+
+Bit Facts and Tricks
+--------------------
+
+x ^ 0s = x because 0 wont effect the xor
+
+x ^ 1s = ~s because 1 will flip everything when used in conjunction with xor
+
+x ^ x = 0 because all the 1s will line up to 0
+
+x & 0s = 0 because & will get 0 whenever we have a 0
+
+x & 1s = x because 1s
+
+x & x = x
+
+x | 0s = x
+
+x | 1s = 1s
+
+x | x = x
+
+Logical Shift: 0 shifted in (>>>) (literally shifts bits and doesnt care)
+Arithmetic Shift: Sign preserved (>>) (basically divided by 2)
+
+
+
