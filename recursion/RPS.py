@@ -15,4 +15,16 @@ def rps(num_rounds):
     return permutations
 
 
-print(rps(3))
+# print(rps(3))
+
+
+def rps_alt(num_rounds, plays=[], choices=['R', 'P', 'S'], permutations=[]):
+    if (len(plays) == num_rounds):
+        return plays[:]
+
+    for choice in choices:
+        permutations.append(rps_alt(num_rounds, plays + [choice], choices[:]))
+
+    return permutations
+
+print(rps_alt(3))
