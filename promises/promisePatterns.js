@@ -2,12 +2,12 @@
 loadSomething().then(function (something) {
   loadAnotherThing.then(function (another) {
     doSomethingOnBothOfThem(something, another);
-  })
-})
+  });
+});
 
 //promise returned here will resolve with array of results that will be passed to then
 //spread splits this up amongst the params
-q.all([loadSomething(), loadAnotherThing()])
+Promise.all([loadSomething(), loadAnotherThing()])
     .spread(function (something, another) {
       doSomethingOnBothOfThem(something, another);
     });
@@ -56,6 +56,7 @@ function workMyCollection () {
     return doSomethingAsync(nextItem);
   }));
 }
+
 
 //Series
 function workMyCollection () {
